@@ -21,8 +21,11 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin@local.de}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-pgadmin}
+      PGADMIN_SERVER_JSON_FILE: /pgadmin4/serverconf/servers.json
     ports:
       - ${PGADMIN_PORT:-9000}:80
+    volumes:
+      - ${PGADMIN_CONFIG_FILE:-pgadmin4}:/pgadmin4/serverconf/servers.json
     networks:
       - postgres
 
